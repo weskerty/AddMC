@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casita Server</title>
+<link rel="icon" href="favicon.ico">
+<title>Minecraft Server</title>
+<meta name="description" content="Servidor Minecraft Bedrock">
+<meta property="og:title" content="Minecraft Server">
+<meta property="og:description" content="Servidor Minecraft Bedrock">
+<meta property="og:image" content="https://i.ibb.co/S4MpvMYn/mclogo.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Minecraft Server">
+<meta name="twitter:description" content="Servidor Minecraft Bedrock">
+<meta name="twitter:image" content="https://i.ibb.co/S4MpvMYn/mclogo.png">
 <style>
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,sans-serif;padding:20px;background:#0d0f12 url('wallpaper.avif') center/cover no-repeat}
@@ -36,9 +46,9 @@ body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:c
   <div class="mc-head">
     <div class="mc-thumb"></div>
     <div class="mc-hinfo">
-      <div class="mc-name">Casita Server</div>
-      <div class="mc-desc">Servidor Minecraft Bedrock</div>
-      <div class="mc-addr" id="BS_FW2">mc.cheagana.com:19132</div>
+      <div class="mc-name" id="BS_FW4"></div>
+      <div class="mc-desc" id="BS_FW5"></div>
+      <div class="mc-addr" id="BS_FW2"></div>
       <div class="mc-acts">
         <div class="mc-shr" id="BS_FW3">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -48,18 +58,27 @@ body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:c
     </div>
   </div>
   <div class="mc-note">presiona el boton de arriba para anadir el server ⬆</div>
-  <div class="mc-note">💡 <a class="mc-wlink" href="https://wa.me/595972184435">Solicitar copia del mundo</a></div>
+  <div class="mc-note" id="BS_FW6"></div>
 </div>
 
 <script>
 const SN1='Casita Server';
 const SU1='mc.cheagana.com';
 const SP1='19132';
+const SD1='Servidor Minecraft Bedrock';
+const WA1='595972184435';
+
+document.title=SN1;
+document.getElementById('BS_FW4').textContent=SN1;
+document.getElementById('BS_FW5').textContent=SD1;
+document.getElementById('BS_FW6').innerHTML=`💡 <a class="mc-wlink" href="https://wa.me/${WA1}">Solicitar copia del mundo</a>`;
+
 const URI1=`minecraft:?addExternalServer=${encodeURIComponent(SN1)}|${SU1}:${SP1}`;
 document.getElementById('BS_FW1').href=URI1;
 window.location.href=URI1;
 
 const AD1=document.getElementById('BS_FW2');
+AD1.textContent=`${SU1}:${SP1}`;
 AD1.onclick=()=>{
   navigator.clipboard.writeText(`${SU1}:${SP1}`);
   AD1.classList.add('cp');
