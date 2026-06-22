@@ -13,32 +13,42 @@ body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:c
 .mc-hinfo{flex:1;min-width:0}
 .mc-name{font-size:1.1em;font-weight:700;color:#fff;margin:0 0 4px}
 .mc-desc{font-size:.85em;color:rgba(255,255,255,.5);margin:0 0 10px;line-height:1.45}
-.mc-addr{font-size:.78em;color:rgba(255,255,255,.35);font-family:monospace;background:rgba(255,255,255,.05);display:inline-block;padding:3px 8px;border-radius:7px;margin-bottom:14px}
+.mc-addr{font-size:.92em;color:rgba(255,255,255,.6);font-family:monospace;background:rgba(255,255,255,.05);display:block;padding:8px 12px;border-radius:9px;margin-bottom:14px;cursor:pointer;transition:background .15s;user-select:none;border:1px solid rgba(255,255,255,.08)}
+.mc-addr:hover{background:rgba(255,255,255,.1)}
+.mc-addr.cp{color:#7ee87a;border-color:rgba(98,210,88,.3)}
 .mc-acts{display:flex;gap:6px;flex-wrap:wrap}
-.mc-bbtn{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:12px;font-size:.85em;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid rgba(98,210,88,.3);background:rgba(98,210,88,.08);color:#7ee87a;transition:background .18s,transform .15s;width:100%;justify-content:center}
+.mc-bbtn{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border-radius:12px;font-size:.85em;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid rgba(98,210,88,.3);background:rgba(98,210,88,.08);color:#7ee87a;transition:background .18s,transform .15s;flex:1;justify-content:center}
 .mc-bbtn:hover{background:rgba(98,210,88,.16);transform:translateY(-1px)}
+.mc-shr{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);cursor:pointer;transition:background .18s,transform .15s;flex-shrink:0}
+.mc-shr:hover{background:rgba(255,255,255,.13);transform:translateY(-1px)}
+.mc-shr svg{width:18px;height:18px;stroke:#fff}
 .mc-note{padding:10px 20px 16px;border-top:1px solid rgba(255,255,255,.06);font-size:.78em;color:rgba(255,255,255,.4);line-height:1.5}
+.mc-wlink{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:20px;font-size:.85em;font-weight:600;text-decoration:none;border:1px solid rgba(37,211,102,.3);background:rgba(37,211,102,.1);color:#4edc7e;transition:background .18s,transform .15s}
+.mc-wlink:hover{background:rgba(37,211,102,.18);transform:translateY(-1px)}
 </style>
 </head>
 <body>
-<div style="text-align:center;">
- <div class="vocaroo-container">
+<!-- <div class="vocaroo-container">
         <iframe width="300" height="60" src="https://vocaroo.com/embed/1oiqly99Tf2e?autoplay=1" frameborder="0" allow="autoplay"></iframe>
     </div>
+ -->
 <div class="mc-card">
   <div class="mc-head">
     <div class="mc-thumb"></div>
     <div class="mc-hinfo">
       <div class="mc-name">Casita Server</div>
       <div class="mc-desc">Servidor Minecraft Bedrock</div>
-      <div class="mc-addr">mc.cheagana.com:19132</div>
+      <div class="mc-addr" id="BS_FW2">mc.cheagana.com:19132</div>
       <div class="mc-acts">
+        <div class="mc-shr" id="BS_FW3">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
         <a class="mc-bbtn" id="BS_FW1" href="#">Unite al Servidor</a>
       </div>
     </div>
   </div>
   <div class="mc-note">presiona el boton de arriba para anadir el server ⬆</div>
-  <div class="mc-note"> <p>💡 Puedes <a href="https://wa.me/595972184435">solicitar una copia del mundo</a> en cualquier momento.</p></div>
+  <div class="mc-note">💡 <a class="mc-wlink" href="https://wa.me/595972184435">Solicitar copia del mundo</a></div>
 </div>
 
 <script>
@@ -48,6 +58,18 @@ const SP1='19132';
 const URI1=`minecraft:?addExternalServer=${encodeURIComponent(SN1)}|${SU1}:${SP1}`;
 document.getElementById('BS_FW1').href=URI1;
 window.location.href=URI1;
+
+const AD1=document.getElementById('BS_FW2');
+AD1.onclick=()=>{
+  navigator.clipboard.writeText(`${SU1}:${SP1}`);
+  AD1.classList.add('cp');
+  AD1.textContent='Copiado';
+  setTimeout(()=>{AD1.classList.remove('cp');AD1.textContent=`${SU1}:${SP1}`},1500);
+};
+
+document.getElementById('BS_FW3').onclick=()=>{
+  navigator.share({text:`Unite a mi servidor de Minecraft en ${window.location.href}`});
+};
 </script>
 
 </body>
